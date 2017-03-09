@@ -1,0 +1,27 @@
+Biometric Authentication System
+===============================
+
+This system is a model of biometric authentication system that takes length data
+from image processing of a picture of hand. Here we use 8 different length that 
+can measure. Image processing part is not implemented here. After reading the 
+image the data is sent to the system and check authentications.
+
+Main Security feature here is the generating cipher from measurements. 
+
+Cipher
+------
+    there are 8 values in the measurement list
+    they are joined with '-' separator
+        01-148-1875-171-10-6-
+    then split this string in to substrings by '-' symbol.
+        {01 148 1875 171 10 6}        
+    each measurement is converted into binary format and XOR with a binary x =0011001100...
+    the length of the x changes by equaling to each measurement.
+    after that results are converted into decimal number. The length of the results also saved along with
+    final decimal numbers.
+    
+    when authenticating, 
+        check the measurements with available data 
+            if 3 or more measurements are make difference with available date above 3mm.
+            then authentication  will be fail.
+        
